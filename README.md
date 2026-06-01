@@ -100,14 +100,7 @@ pytest --cov=src tests/
 - **Frontend**: React 18, Three.js (React Three Fiber), Vite, WebSockets
 - **Testing**: pytest, pytest-cov
 
-## 📄 Documentation
 
-Additional documentation and reports are available in the `DS(synopsis)/` directory, including:
-
-- Research summary PDFs
-- Layered technical explanations
-- Q&A bank for viva preparation
-- Concept maps and analogies
 
 ## 📝 License
 
