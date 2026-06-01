@@ -1,0 +1,67 @@
+# ========================
+# OS & Editor
+# ========================
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+venv/
+.venv/
+env/
+.env
+*.whl
+.coverage
+htmlcov/
+.pytest_cache/
+*.log
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================
+# Large binary / presentation files
+# ========================
+*.key
+*.pptx
+
+# ========================
+# Duplicate / stale scaffolds
+# ========================
+orbit-ui/orbit-ui/
+
+# ========================
+# Temporary / generated output
+# ========================
+*.txt
+!short-arc-ai-workspace/data/*.txt
+!short-arc-ai-workspace/papers/*.md
+backend.log
+tmp_*.py
+conjunction_example_report.txt
+pytest_output.txt
+test_out.txt
