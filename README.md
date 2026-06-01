@@ -115,4 +115,3 @@ This project was developed as an academic research project for AI-based space ob
 
 ---
 
-*Built with ☕ and orbital mechanics.*
