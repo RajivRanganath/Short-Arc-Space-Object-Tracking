@@ -1,4 +1,4 @@
-# 🛰️ Orbit Guard AI
+# Orbit Guard AI
 
 > **AI-powered real-time space debris tracking, data association, and conjunction assessment system.**
 
@@ -6,7 +6,7 @@ Orbit Guard AI tackles one of the hardest problems in space situational awarenes
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The project is organized into two main components:
 
@@ -34,7 +34,7 @@ orbit-guard/
 └── DS(synopsis)/              # Project documentation & reports
 ```
 
-## 🔬 Key Algorithms
+## Key Algorithms
 
 | Module | Algorithm | Purpose |
 |--------|-----------|---------|
@@ -44,7 +44,7 @@ orbit-guard/
 | **Propagation** | J2-perturbed two-body dynamics | Physics-accurate short-term orbit prediction |
 | **Conjunction Assessment** | Mahalanobis-distance screening | Collision probability estimation between tracks |
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Backend (Python)
 
@@ -76,14 +76,14 @@ npm run dev
 
 Open `http://localhost:5173` to launch the 3D visualization. Ensure the Python backend is running so the WebSocket connection (`ws://localhost:8000/ws`) can attach.
 
-## 🧪 Testing
+## Testing
 
 ```bash
 cd short-arc-ai-workspace
 pytest --cov=src tests/
 ```
 
-## 📊 Demos & Benchmarks
+## Demos & Benchmarks
 
 | Script | Description |
 |--------|-------------|
@@ -94,7 +94,7 @@ pytest --cov=src tests/
 | `run_benchmark.py` | Automated performance benchmarking |
 | `run_scheduler_demo.py` | Sensor scheduling algorithm demo |
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: Python 3.9+, NumPy, SciPy, Numba, Scikit-learn, Skyfield, FastAPI
 - **Frontend**: React 18, Three.js (React Three Fiber), Vite, WebSockets
@@ -102,7 +102,7 @@ pytest --cov=src tests/
 
 
 
-## 📝 License
+## License
 
 This project was developed as an academic research project for AI-based space object tracking.
 
