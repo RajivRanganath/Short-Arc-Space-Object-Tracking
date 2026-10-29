@@ -10,24 +10,28 @@ def test_health_check():
     assert response.json() == {"status": "healthy", "tracks": 0}
 
 def test_process_frame():
-    # Construct a dummy frame request
-    payload = {
-        "timestamp_iso": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "measurements": [
-            {
-                "site_eci": [6378.0, 0.0, 0.0],
-                "range": 500.0,
-                "ra": 0.1,
-                "dec": 0.2,
-                "true_object_id": 42
-            }
-        ]
-    }
-    
-    response = client.post("/process_frame", json=payload)
-    assert response.status_code == 200
-    
-    data = response.json()
+    now = datetime.datetime.now(datetime.timezone.utc)
+
+    def post_frame(t, ra, dec):
+        payload = {
+            "timestamp_iso": t.isoformat(),
+            "measurements": [
+                {
+                    "site_eci": [6378.0, 0.0, 0.0],
+                    "range": 500.0,
+                    "ra": ra,
+                    "dec": dec,
+                    "true_object_id": 42
+                }
+            ]
+        }
+        response = client.post("/process_frame", json=payload)
+        assert response.status_code == 200
+        return response.json()
+
+    # First detection is only tentative; a nearby second one confirms the track
+    assert post_frame(now, 0.1, 0.2)["active_tracks"] == 0
+    data = post_frame(now + datetime.timedelta(seconds=10), 0.101, 0.201)
     assert "timestamp" in data
     assert data["active_tracks"] == 1
     assert len(data["tracks"]) == 1

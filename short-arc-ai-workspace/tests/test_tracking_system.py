@@ -12,18 +12,19 @@ def test_tracking_system_pipeline():
     system.process_frame(now, [])
     assert len(system.tracks) == 0
     
-    # Send a frame with one measurement (initializes track)
+    # First detection is held as tentative, not yet a track
     m1 = {
         'site_eci': [6378.0, 0, 0],
         'range': 1000.0,
         'ra': 0.1,
         'dec': 0.1,
     }
-    
+
     system.process_frame(now, [m1])
-    assert len(system.tracks) == 1
-    
-    # Send another frame with a nearby measurement (updates track)
+    assert len(system.tracks) == 0
+    assert len(system.tentative_tracks) == 1
+
+    # A nearby second detection confirms it as a track
     m2 = {
         'site_eci': [6378.0, 0, 0],
         'range': 1000.0,
@@ -33,7 +34,18 @@ def test_tracking_system_pipeline():
     from datetime import timedelta
     next_time = now + timedelta(seconds=10)
     system.process_frame(next_time, [m2])
-    assert len(system.tracks) == 1 # Still 1 track, should be updated
+    assert len(system.tracks) == 1
+    assert len(system.tentative_tracks) == 0
+
+    # A third nearby detection updates that track instead of starting another
+    m3 = {
+        'site_eci': [6378.0, 0, 0],
+        'range': 1000.0,
+        'ra': 0.102,
+        'dec': 0.102,
+    }
+    system.process_frame(next_time + timedelta(seconds=10), [m3])
+    assert len(system.tracks) == 1
     
     # Clean up
     system.tracks.clear()
