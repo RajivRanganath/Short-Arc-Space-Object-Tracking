@@ -25,9 +25,10 @@ class ScenarioGenerator:
                 tles.append((l1, l2))
         return tles
 
-    def generate_scenario(self, n_objects=5, duration_sec=60):
+    def generate_scenario(self, n_objects=5, duration_sec=60, start_time=None):
         """
         Picks N random objects and generates a mixed stream of measurements.
+        start_time: UTC datetime for the first observation (default: now).
         """
         print(f"🌌 Generating scenario with {n_objects} debris objects...")
         
@@ -44,7 +45,8 @@ class ScenarioGenerator:
         # 2. Generate Observations for Each Object
         # We use a fixed start time for everyone so they fly together
         from datetime import datetime, timezone
-        start_time = datetime.now(timezone.utc)
+        if start_time is None:
+            start_time = datetime.now(timezone.utc)
         
         all_measurements = []
         ground_truth_tracks = {} # To verify accuracy later
